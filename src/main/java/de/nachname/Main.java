@@ -74,18 +74,32 @@ public class Main extends Application {
         menuBar.getMenus().addAll(editorMenu, territoriumMenu, elefantMenu, simulationMenu);
 
         //ToolBar
+        Button newT = new Button();
+        Button loadT = new Button();
+        Button saveT = new Button();
+        Button cleanT = new Button();
+        Button gridT = new Button();
+        Button eleT = new Button();
+        Button peanutT = new Button();
+        Button mouseT = new Button();
+        Button abortT = new Button();
+        Button takeT = new Button();
+        Button turnT = new Button();
+        Button stepT = new Button();
+        Button playT = new Button();
+        Button pauseT = new Button();
+        Button stopT = new Button();
+
         ToolBar toolbar = new ToolBar(
-                new Button("Neu"),
-                new Button("Laden"),
-                new Button("Speichern"),
-                new Button("Button 4")
+                newT, loadT, new Separator(), saveT, cleanT, new Separator(), gridT, eleT, peanutT, mouseT, abortT, new Separator(), takeT, turnT, stepT, new Separator(), playT, pauseT, stopT
         );
+
+
         SplitPane pane = new SplitPane();
         Label bot = new Label("Default");
         pane.getItems().add(new TextArea("Code here"));
         pane.getItems().add(new Pane());
         VBox vbox = new VBox(menuBar, toolbar, pane, bot);
-
 
 
 
