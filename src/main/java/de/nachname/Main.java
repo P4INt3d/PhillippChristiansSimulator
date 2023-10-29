@@ -85,10 +85,25 @@ public class Main extends Application {
         ImageView compileImageView = new ImageView(compileImage);
         Image gridImage = new Image("Terrain24.gif");
         ImageView gridImageView = new ImageView(gridImage);
-        //views in order pls
+        Image elefantImage = new Image("elefant24.png");
+        ImageView elefantImageView = new ImageView(elefantImage);
+        Image peanutImage = new Image("erdnuss24.png");
+        ImageView peanutImageView = new ImageView(peanutImage);
+        Image mouseImage = new Image("maus24.png");
+        ImageView mouseImageView = new ImageView(mouseImage);
         Image deleteImage = new Image("Delete24.gif");
         ImageView deleteImageView = new ImageView(deleteImage);
-        //
+        Image eMitEImage = new Image("Delete24.gif");
+        ImageView eMitEImageView = new ImageView(eMitEImage);
+        Image turnImage = new Image("Delete24.gif");
+        ImageView turnImageView = new ImageView(turnImage);
+        Image stepImage = new Image("Delete24.gif");
+        ImageView stepImageView = new ImageView(stepImage);
+        Image takeImage = new Image("Delete24.gif");
+        ImageView takeImageView = new ImageView(takeImage);
+        Image dropImage = new Image("Delete24.gif");
+        ImageView dropImageView = new ImageView(dropImage);
+
         Image playImage = new Image("Play24.gif");
         ImageView playImageView = new ImageView(playImage);
         Image pauseImage = new Image("Pause24.gif");
@@ -109,14 +124,23 @@ public class Main extends Application {
         Button gridT = new Button();
         gridT.setGraphic(gridImageView);
         Button eleT = new Button();
+        eleT.setGraphic(elefantImageView);
         Button peanutT = new Button();
+        peanutT.setGraphic(peanutImageView);
         Button mouseT = new Button();
+        mouseT.setGraphic(mouseImageView);
         Button deleteT = new Button();
         deleteT.setGraphic(deleteImageView);
-
+        Button eMitET = new Button();
+        eMitET.setGraphic(eMitEImageView);
         Button turnT = new Button();
+        turnT.setGraphic(turnImageView);
         Button stepT = new Button();
+        stepT.setGraphic(stepImageView);
         Button takeT = new Button();
+        takeT.setGraphic(takeImageView);
+        Button dropT = new Button();
+        dropT.setGraphic(dropImageView);
         Button playT = new Button();
         playT.setGraphic(playImageView);
         Button pauseT = new Button();
@@ -125,7 +149,7 @@ public class Main extends Application {
         stopT.setGraphic(stopImageView);
 
         ToolBar toolbar = new ToolBar(
-                newT, loadT, new Separator(), saveT, compileT, new Separator(), gridT, eleT, peanutT, mouseT, deleteT, new Separator(), takeT, turnT, stepT, new Separator(), playT, pauseT, stopT
+                newT, loadT, new Separator(), saveT, compileT, new Separator(), gridT, eleT, peanutT, mouseT, deleteT, new Separator(), eMitET, turnT, stepT, takeT, dropT, new Separator(), playT, pauseT, stopT
         );
 
 
