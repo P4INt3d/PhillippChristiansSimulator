@@ -1,3 +1,24 @@
 
-£
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(È«¶Êÿÿÿÿÿ8œêç©¶1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
+g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
+g	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
+g	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Çñ‹ß·1
+g	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8ÄÏŒß·1
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‰í„F8ïß·1
+g	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(ïÚğ úÿÿÿÿ8š²ß·1
+b	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(š“• 8”Èß·1
+b	java:S112N"FDefine and throw a dedicated exception instead of using a generic one.(È…¾ı8±©Õß·1
+n
+java:S1192"LDefine a constant instead of duplicating this literal "Maus im Weg" 4 times.(«Îñüÿÿÿÿ8š²ß·1
+t
+java:S1192"RDefine a constant instead of duplicating this literal "Hier ist der Rand" 4 times.(‘Â“Ğùÿÿÿÿ8Çñ‹ß·1
+w	java:S116"VRename this field "TERRITORIUM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓŞòêüÿÿÿÿ8Ëñ‹ß·1
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‰í„F8Ìñ‹ß·1
+W
+java:S2209"5Change this instance-reference to a static reference.(âº³úÿÿÿÿ8Íñ‹ß·1
+R
+java:S2209"5Change this instance-reference to a static reference.(ƒ¼Á8Îñ‹ß·1

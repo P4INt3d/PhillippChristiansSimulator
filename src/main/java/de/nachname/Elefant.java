@@ -18,6 +18,7 @@ public class Elefant {
             }
             else {
                 TERRITORIUM.setxPosition(TERRITORIUM.getxPosition() + 1);
+                System.out.println("Elefant geht nach Süden");
             }
         }
         if(TERRITORIUM.getvDirection() == 2){
@@ -29,6 +30,7 @@ public class Elefant {
             }
             else {
                 TERRITORIUM.setyPosition(TERRITORIUM.getyPosition() + 1);
+                System.out.println("Elefant geht nach Osten");
             }
         }
         if(TERRITORIUM.getvDirection() == 3){
@@ -40,6 +42,7 @@ public class Elefant {
             }
             else {
                 TERRITORIUM.setxPosition(TERRITORIUM.getxPosition() - 1);
+                System.out.println("Elefant geht nach Norden");
             }
         }
         if(TERRITORIUM.getvDirection() == 4){
@@ -51,8 +54,10 @@ public class Elefant {
             }
             else {
                 TERRITORIUM.setyPosition(TERRITORIUM.getyPosition() - 1);
+                System.out.println("Elefant geht nach Westen");
             }
         }
+        System.out.println("Elefant:" + TERRITORIUM.getxPosition() + ", " + TERRITORIUM.getyPosition());
     }
 
     public void takeP(){
@@ -81,12 +86,27 @@ public class Elefant {
 
     public void turn(){
         int newV;
-        if(TERRITORIUM.getvDirection() == 1) {
-            newV = 4;
+        if(TERRITORIUM.getvDirection() == 4) {
+            newV = 1;
         }
         else {
-            newV = TERRITORIUM.getvDirection()-1;
+            newV = TERRITORIUM.getvDirection()+1;
         }
         TERRITORIUM.setvDirection(newV);
+
+        switch(TERRITORIUM.getvDirection()){
+            case 1:
+                System.out.println("Elefant schaut nach Süden");
+                break;
+            case 2:
+                System.out.println("Elefant schaut nach Osten");
+                break;
+            case 3:
+                System.out.println("Elefant schaut nach Norden");
+                break;
+            case 4:
+                System.out.println("Elefant schaut nach Westen");
+                break;
+        }
     }
 }

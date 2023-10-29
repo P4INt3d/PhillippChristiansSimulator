@@ -4,11 +4,12 @@ public class Territorium {
 
     private static int rows;
     private static int cols;
-    private int vDirection; //1 = Osten, 2 = Süden, 3 = Westen, 4 = Norden
+    private int vDirection; //1 = Süden, 2 = Osten, 3 = Norden, 4 = Westen
     private int xPosition;
     private int yPosition;
     private int totalAmount;
     private int[][] grid; // -1 bedeutet Maus, 0-9 ist die Anzahl der Körner
+    private Elefant actor;
 
 
 
@@ -19,6 +20,7 @@ public class Territorium {
         xPosition = 0;
         yPosition = 0;
         vDirection = 1;
+        actor = new Elefant(this);
     }
 
 
@@ -32,7 +34,10 @@ public class Territorium {
     }
 
     public int[][] getGrid() {
-        return grid;
+        int[][] tempGrid = grid;
+        tempGrid[getxPosition()][getyPosition()] = -2;
+        return tempGrid;
+
     }
 
     public static int getRows() {
@@ -56,7 +61,7 @@ public class Territorium {
     }
 
     public void setvDirection(int vDirection) {
-        vDirection = vDirection;
+        this.vDirection = vDirection;
     }
 
     public int getxPosition() {
@@ -64,7 +69,7 @@ public class Territorium {
     }
 
     public void setxPosition(int xPosition) {
-        xPosition = xPosition;
+        this.xPosition = xPosition;
     }
 
     public int getyPosition() {
@@ -72,7 +77,7 @@ public class Territorium {
     }
 
     public void setyPosition(int yPosition) {
-        yPosition = yPosition;
+        this.yPosition = yPosition;
     }
 
     public int getTotalAmount(){
@@ -91,4 +96,7 @@ public class Territorium {
         return grid[row][col] == -1;
     }
 
+    public Elefant getActor() {
+        return actor;
+    }
 }

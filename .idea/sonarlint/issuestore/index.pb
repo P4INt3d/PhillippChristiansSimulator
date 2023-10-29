@@ -9,3 +9,15 @@ V
 &src/main/java/de/nachname/Elefant.java,c\e\ceca2e2aac00260d4c54f6d025935f0e18452518
 Z
 *src/main/java/de/nachname/Territorium.java,b\7\b76f2d54187261db9402e3ef87f15d1c6e2a2275
+Å
+Q.idea/sonarlint/securityhotspotstore/c/e/ceca2e2aac00260d4c54f6d025935f0e18452518,1\1\11d9cc605f5eb3441cbfe6930570ab0e99fbfb45
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+Å
+Q.idea/sonarlint/securityhotspotstore/c/c/cc88dc1b7df45f203f33a687d73916f8792f7417,c\4\c47e89fee3bfbf695a2fd3d98739e20b4cca22fd
+w
+G.idea/sonarlint/issuestore/c/c/cc88dc1b7df45f203f33a687d73916f8792f7417,3\c\3c5058209ac411fb276cdca45772cc7fcf87702c
+Å
+Q.idea/sonarlint/securityhotspotstore/b/7/b76f2d54187261db9402e3ef87f15d1c6e2a2275,1\4\14d6e4398b3d22021144279c3ed1553e49b7814b
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
