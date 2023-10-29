@@ -11,6 +11,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 public class Main extends Application {
 
     // VM Args: --module-path "\path\to\javafx-sdk-19\lib" --add-modules javafx.controls,javafx.fxml
@@ -164,5 +166,15 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(new StackPane(vbox)));
         primaryStage.show();
+
+        test();
+    }
+
+    public void test(){
+        Territorium t = new Territorium(9, 6);
+        t.setMouse(3,5);
+        t.setP(0,0,4);
+        t.setP(1,2,3);
+        System.out.println(Arrays.deepToString(t.getGrid()).replace("], ", "]\n"));
     }
 }
