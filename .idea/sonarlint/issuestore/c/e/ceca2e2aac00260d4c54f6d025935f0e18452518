@@ -1,24 +1,31 @@
 
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
-g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
-g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Æñ‹ß·1
-g	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8Æñ‹ß·1
-g	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(‘Â“Ğùÿÿÿÿ8Çñ‹ß·1
-g	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(«Îñüÿÿÿÿ8ÄÏŒß·1
-a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‰í„F8ïß·1
-g	java:S112@"FDefine and throw a dedicated exception instead of using a generic one.(ïÚğ úÿÿÿÿ8š²ß·1
-b	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(š“• 8”Èß·1
-b	java:S112N"FDefine and throw a dedicated exception instead of using a generic one.(È…¾ı8±©Õß·1
-n
-java:S1192"LDefine a constant instead of duplicating this literal "Maus im Weg" 4 times.(«Îñüÿÿÿÿ8š²ß·1
-t
-java:S1192"RDefine a constant instead of duplicating this literal "Hier ist der Rand" 4 times.(‘Â“Ğùÿÿÿÿ8Çñ‹ß·1
-w	java:S116"VRename this field "TERRITORIUM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓŞòêüÿÿÿÿ8Ëñ‹ß·1
-n
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‰í„F8Ìñ‹ß·1
-W
-java:S2209"5Change this instance-reference to a static reference.(âº³úÿÿÿÿ8Íñ‹ß·1
+w	java:S116
+"VRename this field "TERRITORIUM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓŞòêüÿÿÿÿ8É¯¥ƒº1
+F
+java:S1940")Use the opposite operator ("!=") instead.(ùêµ¢8Ë¯¥ƒº1
 R
-java:S2209"5Change this instance-reference to a static reference.(ƒ¼Á8Îñ‹ß·1
+java:S2209"5Change this instance-reference to a static reference.(ùêµ¢8Ë¯¥ƒº1
+K
+java:S1940")Use the opposite operator ("!=") instead.(ò×Ä×ÿÿÿÿÿ8Ë¯¥ƒº1
+W
+java:S2209"5Change this instance-reference to a static reference.(ò×Ä×ÿÿÿÿÿ8Ë¯¥ƒº1
+K
+java:S1940")Use the opposite operator (">=") instead.(İˆòûÿÿÿÿ8Ë¯¥ƒº1
+F
+java:S1940")Use the opposite operator (">=") instead.(–¥Ğ¢8Ì¯¥ƒº1
+o
+java:S3776E"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ºªí8Ï¯¥ƒº1
+W
+java:S2209G"5Change this instance-reference to a static reference.(âº³úÿÿÿÿ8Ğ¯¥ƒº1
+G	java:S106O"+Replace this use of System.out by a logger.(ıÇªø8Ñ¯¥ƒº1
+R
+java:S2209S"5Change this instance-reference to a static reference.(ƒ¼Á8Ñ¯¥ƒº1
+G	java:S106["+Replace this use of System.out by a logger.(ŠíÇì8Ñ¯¥ƒº1
+G	java:S106g"+Replace this use of System.out by a logger.(õ½–ø8Ò¯¥ƒº1
+G	java:S106s"+Replace this use of System.out by a logger.(†óºÅ8Ò¯¥ƒº1
+L	java:S106v"+Replace this use of System.out by a logger.(ô˜¬Àùÿÿÿÿ8Ò¯¥ƒº1
+D	java:S131›""Add a default case to this switch.(™¸†Ğúÿÿÿÿ8Õ¯¥ƒº1
+H	java:S106"+Replace this use of System.out by a logger.(Ğ²¨8Õ¯¥ƒº1
+M	java:S106 "+Replace this use of System.out by a logger.(•ÔãÀøÿÿÿÿ8Õ¯¥ƒº1
+H	java:S106£"+Replace this use of System.out by a logger.(€Èø½8Õ¯¥ƒº1
+H	java:S106¦"+Replace this use of System.out by a logger.(³×û8Õ¯¥ƒº1

@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -199,17 +200,24 @@ public class Main extends Application {
                 newT, loadT, new Separator(), saveT, compileT, new Separator(), gridT, eleT, peanutT, mouseT, deleteT, new Separator(), eMitET, turnT, stepT, takeT, dropT, new Separator(), playT, pauseT, stopT
         );
 
+        Territorium ter = new Territorium();
+        TerritoriumPane terPane = new TerritoriumPane(ter);
+        ScrollPane scPane = new ScrollPane(terPane);
+        scPane.setFitToHeight(true);
+        scPane.setFitToWidth(true);
 
         SplitPane pane = new SplitPane();
-        Label bot = new Label("Default");
-        pane.getItems().add(new TextArea("Code here"));
-        pane.getItems().add(new Pane());
-        VBox vbox = new VBox(menuBar, toolbar, pane, bot);
+        Label bot = new Label("Welcome");
+        pane.getItems().addAll(new TextArea("Code here"), scPane);
+        VBox vbox = new VBox();
+        VBox.setVgrow(scPane, Priority.ALWAYS);
+        vbox.getChildren().addAll(menuBar, toolbar, pane, bot);
 
 
-
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(new StackPane(vbox)));
+//
+        primaryStage.setTitle("Nelly the Elephant");
+        Scene scene = new Scene(vbox);
+        primaryStage.setScene(scene);
         primaryStage.show();
 
         test();

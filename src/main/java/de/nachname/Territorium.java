@@ -2,8 +2,8 @@ package de.nachname;
 
 public class Territorium {
 
-    private static int rows;
-    private static int cols;
+    private int rows;
+    private int cols;
     private int vDirection; //1 = Süden, 2 = Osten, 3 = Norden, 4 = Westen
     private int xPosition;
     private int yPosition;
@@ -13,13 +13,23 @@ public class Territorium {
 
 
 
+    public Territorium(){
+        rows = 8;
+        cols = 12;
+        setGrid(rows, cols);
+        xPosition = 0;
+        yPosition = 0;
+        vDirection = 2;
+        actor = new Elefant(this);
+
+    }
     public Territorium(int h, int w){
         rows = h;
         cols = w;
         setGrid(rows, cols);
         xPosition = 0;
         yPosition = 0;
-        vDirection = 1;
+        vDirection = 2;
         actor = new Elefant(this);
     }
 
@@ -40,11 +50,11 @@ public class Territorium {
 
     }
 
-    public static int getRows() {
+    public int getRows() {
         return rows;
     }
 
-    public static int getCols() {
+    public int getCols() {
         return cols;
     }
 
@@ -94,6 +104,10 @@ public class Territorium {
 
     public boolean hasMouse(int row, int col){
         return grid[row][col] == -1;
+    }
+
+    public void clear(int r, int c){
+        grid[r][c]=0;
     }
 
     public Elefant getActor() {
