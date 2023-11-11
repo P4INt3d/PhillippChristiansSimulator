@@ -125,15 +125,15 @@ public class Main extends Application {
         ImageView mouseImageView = new ImageView(mouseImage);
         Image deleteImage = new Image("Delete24.gif");
         ImageView deleteImageView = new ImageView(deleteImage);
-        Image eMitEImage = new Image("Delete24.gif");
+        Image eMitEImage = new Image("elefantMitE24.png");
         ImageView eMitEImageView = new ImageView(eMitEImage);
-        Image turnImage = new Image("Delete24.gif");
+        Image turnImage = new Image("turn24.png");
         ImageView turnImageView = new ImageView(turnImage);
-        Image stepImage = new Image("Delete24.gif");
+        Image stepImage = new Image("elefantSchritt24.png");
         ImageView stepImageView = new ImageView(stepImage);
-        Image takeImage = new Image("Delete24.gif");
+        Image takeImage = new Image("ErdnussAuf24.png");
         ImageView takeImageView = new ImageView(takeImage);
-        Image dropImage = new Image("Delete24.gif");
+        Image dropImage = new Image("ErdnussAb24.png");
         ImageView dropImageView = new ImageView(dropImage);
         Image playImage24 = new Image("Play24.gif");
         ImageView playImageView24 = new ImageView(playImage24);
@@ -201,6 +201,7 @@ public class Main extends Application {
         );
 
         Territorium ter = new Territorium();
+        ter.setMouse(5, 5);
         TerritoriumPane terPane = new TerritoriumPane(ter);
         ScrollPane scPane = new ScrollPane(terPane);
         scPane.setFitToHeight(true);
@@ -220,7 +221,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        test();
+        //test();
     }
 
     public void test(){
