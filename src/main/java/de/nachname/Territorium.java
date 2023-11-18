@@ -58,6 +58,14 @@ public class Territorium {
         return cols;
     }
 
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+
     public int getP(int row, int col){
         return grid[row][col];
     }
@@ -99,15 +107,29 @@ public class Territorium {
     }
 
     public void setMouse(int row, int col){
-        grid[row][col] = -1;
+        if(!hasMouse(row, col)){
+            grid[row][col] = -1;
+        } else {
+            grid[row][col] = 0;
+        }
+
     }
 
     public boolean hasMouse(int row, int col){
         return grid[row][col] == -1;
     }
 
+
     public void clear(int r, int c){
         grid[r][c]=0;
+    }
+
+    public void reset(){
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                grid[r][c] = 0;
+            }
+        }
     }
 
     public Elefant getActor() {

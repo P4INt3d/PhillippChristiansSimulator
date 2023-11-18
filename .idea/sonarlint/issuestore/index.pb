@@ -31,3 +31,27 @@ g
 7src/main/java/de/nachname/exceptions/TileException.java,d\b\dbb24f0cfb58e20f092840922186c35fd672eb91
 ^
 .src/main/java/de/nachname/TerritoriumPane.java,2\4\24ee6fcf7e1a0bd52bdd1dbd790d34aa83765976
+X
+(src/main/java/de/nachname/MainStage.java,2\7\272e2545626349a1791209864ba9889c9dbbb8a1
+Å
+Q.idea/sonarlint/securityhotspotstore/2/4/24ee6fcf7e1a0bd52bdd1dbd790d34aa83765976,b\c\bc4dfc970ac895e0c1227b97406e3bcdbb84a079
+Å
+Q.idea/sonarlint/securityhotspotstore/d/6/d642b30ea7cfeca4c628c6e437b976e92dc9de0e,b\5\b5c3b2358798a7f6b69c9dde0a5c7f1e31dec92d
+w
+G.idea/sonarlint/issuestore/d/6/d642b30ea7cfeca4c628c6e437b976e92dc9de0e,3\6\3660bada89dc095423c8af735e33bcf3a803d7fc
+Å
+Q.idea/sonarlint/securityhotspotstore/d/b/dbb24f0cfb58e20f092840922186c35fd672eb91,a\6\a66c51cf6777a4362da9c75161ed9ab1237d6fc9
+w
+G.idea/sonarlint/issuestore/4/5/4513846b5cf8d816bfcea60abfb98154a0e56bc0,3\6\36a9b7c91a932a6f6aa0939616fb44aca1172f55
+w
+G.idea/sonarlint/issuestore/d/b/dbb24f0cfb58e20f092840922186c35fd672eb91,8\5\850ce5d808293f38dfa5625f0c1737a90944f5a4
+Å
+Q.idea/sonarlint/securityhotspotstore/6/2/62ea3ee58c2c335a80b2186ccd51b5a1a426b655,8\c\8cf9fc3c3b7eb14639292cde7a073ecf48a1c864
+O
+PhillippChristiansSimulator.iml,0\6\0650ce173eadc8f752ba1dc4b8a9248b50308185
+w
+G.idea/sonarlint/issuestore/6/2/62ea3ee58c2c335a80b2186ccd51b5a1a426b655,1\3\138f11237fdcd05d128a663997d26d6de0e210e2
+Å
+Q.idea/sonarlint/securityhotspotstore/2/7/272e2545626349a1791209864ba9889c9dbbb8a1,8\7\87fbbcf0a0addc48b0eb49ea264da568661f4e05
+Å
+Q.idea/sonarlint/securityhotspotstore/4/5/4513846b5cf8d816bfcea60abfb98154a0e56bc0,2\0\208f139467d0243733d0b63171a2b3505c856dad
