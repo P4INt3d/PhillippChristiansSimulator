@@ -1,19 +1,12 @@
 package de.nachname;
 
+import de.nachname.controller.MainStageController;
+import de.nachname.controller.TerritoriumPaneController;
+import de.nachname.model.Territorium;
+import de.nachname.view.MainStage;
+import de.nachname.view.TerritoriumPane;
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.util.Arrays;
 
 public class Main extends Application {
 
@@ -24,9 +17,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Territorium territorium = new Territorium(8, 12);
+        Territorium territorium = new Territorium();
         MainStage stage = new MainStage(territorium);
-        stage.show();
-
+        TerritoriumPaneController tpc = new TerritoriumPaneController(territorium, stage.getTerritoriumPane());
+        new MainStageController(territorium, stage, tpc);
     }
 }

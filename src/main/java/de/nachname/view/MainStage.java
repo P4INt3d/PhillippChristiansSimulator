@@ -1,15 +1,13 @@
-package de.nachname;
+package de.nachname.view;
 
+import de.nachname.model.Territorium;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -19,17 +17,25 @@ import java.util.Optional;
 
 public class MainStage extends Stage {
 
-    private Territorium territorium;
-    private TerritoriumPane territoriumPane;
-    private Label messageLabel;
+    private final Territorium territorium;
+    private final TerritoriumPane territoriumPane;
+    private final ScrollPane scPane;
+    private final Label messageLabel;
+    private final Menu editorMenu,territoriumMenu, save, elefantMenu, simulationMenu;
+    private final MenuItem neu, open, compile, print1, quit, xml, jaxb, serial, print2,
+            saveAP, load, changeSize, amountP, leftTurn, step, take, give, play, pause, stop;
+    private final RadioMenuItem placeElephant, placePeanut, placeMouse, deleteCell;
+    private final MenuBar menuBar;
+    private final Button newT, loadT, saveT, compileT, gridT, eMitET, turnT, stepT, takeT,
+            dropT, playT, pauseT, stopT;
 
-    public Label getMessageLabel(){
-        return messageLabel;
-    }
+    private final ToggleButton eleT, peanutT, mouseT, deleteT;
+
 
     public MainStage(Territorium ter){
 
         this.territorium = ter;
+        territoriumPane = new TerritoriumPane(ter, this);
 
         // Editor Menü
         Image neu16 = new Image("New16.gif");
@@ -38,91 +44,51 @@ public class MainStage extends Stage {
         ImageView open16View = new ImageView(open16);
         Image print16 = new Image("Print16.gif");
         ImageView print16View = new ImageView(print16);
-        Menu editorMenu = new Menu("_Editor");
-        MenuItem neu = new MenuItem("_Neu");
+        editorMenu = new Menu("_Editor");
+        neu = new MenuItem("_Neu");
         neu.setAccelerator(KeyCombination.valueOf("SHORTCUT+N"));
         neu.setGraphic(neu16View);
-        neu.setOnAction(e -> {
-            Territorium territoriumNew = new Territorium(8, 12);
-            MainStage stage = new MainStage(territoriumNew);
-            stage.show();
-        });
-        MenuItem open = new MenuItem("_Öffnen");
+        open = new MenuItem("_Öffnen");
         open.setAccelerator(KeyCombination.valueOf("SHORTCUT+O"));
         open.setGraphic(open16View);
-        MenuItem compile = new MenuItem("_Kompilieren");
+        compile = new MenuItem("_Kompilieren");
         compile.setAccelerator(KeyCombination.valueOf("SHORTCUT+K"));
-        MenuItem print1 = new MenuItem("_Drucken");
+        print1 = new MenuItem("_Drucken");
         print1.setGraphic(print16View);
         print1.setAccelerator(KeyCombination.valueOf("SHORTCUT+P"));
-        MenuItem quit = new MenuItem("_Beenden");
+        quit = new MenuItem("_Beenden");
         quit.setAccelerator(KeyCombination.valueOf("SHORTCUT+Q"));
-        quit.setOnAction(e -> Platform.exit());
         editorMenu.getItems().addAll(neu, open, new SeparatorMenuItem(), compile, print1, new SeparatorMenuItem(), quit);
 
 
         //Territorium Menü
-        Menu territoriumMenu = new Menu("_Territorium");
-        Menu save = new Menu("S_peichern");
-        MenuItem xml = new MenuItem("XML");
-        MenuItem jaxb = new MenuItem("JAXB");
-        MenuItem serial = new MenuItem("Serialisieren");
-        Menu load = new Menu("La_den");
-        Menu saveAP = new Menu("_Als Bild speichern");
-        MenuItem print2 = new MenuItem("_Drucken");
-        MenuItem changeSize = new MenuItem("_Größe ändern...");
-        changeSize.setOnAction(e -> {
-            Dialog<Pair<Integer, Integer>> dialog = new Dialog<>();
-            dialog.setTitle("Change Size");
-            ButtonType applyButton = new ButtonType("Apply", ButtonBar.ButtonData.APPLY);
-            dialog.getDialogPane().getButtonTypes().addAll(applyButton, ButtonType.CANCEL);
-
-            Spinner<Integer> rowSpinner = new Spinner<>(4, 20, territorium.getRows());
-            Spinner<Integer> colSpinner = new Spinner<>(4, 20, territorium.getCols());
-
-            VBox vbox = new VBox();
-            vbox.getChildren().addAll(rowSpinner, colSpinner);
-            dialog.getDialogPane().setContent(vbox);
-
-            dialog.setResultConverter(dialogButton -> {
-                if(dialogButton == applyButton){
-                    return new Pair<>(rowSpinner.getValue(), colSpinner.getValue());
-                }
-                return null;
-            });
-
-            Optional<Pair<Integer, Integer>> result = dialog.showAndWait();
-
-            result.ifPresent(pair -> {
-                territorium.setRows(pair.getKey());
-                territorium.setCols(pair.getValue());
-                territorium.setGrid(pair.getKey(), pair.getValue());
-                territoriumPane.eraseGrid();
-                territoriumPane.printCanvas();
-            });
-        });
-        RadioMenuItem placeElephant = new RadioMenuItem("Elefant _platzieren");
-        placeElephant.setOnAction(e -> territoriumPane.placeMode(1));
-        RadioMenuItem placePeanut = new RadioMenuItem("E_rdnuss platzieren");
-        placePeanut.setOnAction(e -> territoriumPane.placeMode(2));
-        RadioMenuItem placeMouse = new RadioMenuItem("_Maus platzieren");
-        placeMouse.setOnAction(e -> territoriumPane.placeMode(3));
-        RadioMenuItem deleteCell = new RadioMenuItem("_Kachel löschen");
-        deleteCell.setOnAction(e -> territoriumPane.placeMode(4));
+        territoriumMenu = new Menu("_Territorium");
+        save = new Menu("S_peichern");
+        xml = new MenuItem("XML");
+        jaxb = new MenuItem("JAXB");
+        serial = new MenuItem("Serialisieren");
+        load = new Menu("La_den");
+        saveAP = new Menu("_Als Bild speichern");
+        print2 = new MenuItem("_Drucken");
+        changeSize = new MenuItem("_Größe ändern...");
+        placeElephant = new RadioMenuItem("Elefant _platzieren");
+        placePeanut = new RadioMenuItem("E_rdnuss platzieren");
+        placeMouse = new RadioMenuItem("_Maus platzieren");
+        deleteCell = new RadioMenuItem("_Kachel löschen");
         save.getItems().addAll(xml, jaxb, serial);
         territoriumMenu.getItems().addAll(save, load, saveAP, print2, changeSize, new SeparatorMenuItem(), placeElephant, placePeanut, placeMouse, deleteCell);
 
 
         //Elefant Menü
-        Menu elefantMenu = new Menu("E_lefant");
-        MenuItem amountP = new MenuItem("Gesammelte Erdnüsse");
-        MenuItem leftTurn = new MenuItem("linksUm");
+        elefantMenu = new Menu("E_lefant");
+        amountP = new MenuItem("Gesammelte Erdnüsse");
+        leftTurn = new MenuItem("linksUm");
         leftTurn.setAccelerator(KeyCombination.valueOf("SHORTCUT+SHIFT+L"));
-        MenuItem step = new MenuItem("vor");
+        step = new MenuItem("vor");
         step.setAccelerator(KeyCombination.valueOf("SHORTCUT+SHIFT+V"));
-        MenuItem take = new MenuItem("nimm");
+        take = new MenuItem("nimm");
         take.setAccelerator(KeyCombination.valueOf("SHORTCUT+SHIFT+N"));
-        MenuItem give = new MenuItem("gib");
+        give = new MenuItem("gib");
         give.setAccelerator(KeyCombination.valueOf("SHORTCUT+SHIFT+G"));
         ToggleGroup terriToggle = new ToggleGroup();
         placeElephant.setToggleGroup(terriToggle);
@@ -134,23 +100,23 @@ public class MainStage extends Stage {
         //Simualation Menü
         Image playImage = new Image("Play16.gif");
         ImageView playImageView = new ImageView(playImage);
-        Menu simulationMenu = new Menu("_Simulation");
+        simulationMenu = new Menu("_Simulation");
         Image pauseImage = new Image("Pause16.gif");
         ImageView pauseImageView = new ImageView(pauseImage);
         Image stopImage = new Image("Stop16.gif");
         ImageView stopImageView = new ImageView(stopImage);
-        MenuItem play = new MenuItem("Start/Fortsetzen");
+        play = new MenuItem("Start/Fortsetzen");
         play.setAccelerator(KeyCombination.valueOf("SHORTCUT+F11"));
         play.setGraphic(playImageView);
-        MenuItem pause = new MenuItem("Pause");
+        pause = new MenuItem("Pause");
         pause.setGraphic(pauseImageView);
-        MenuItem stop = new MenuItem("Stopp");
+        stop = new MenuItem("Stopp");
         stop.setAccelerator(KeyCombination.valueOf("SHORTCUT+F12"));
         stop.setGraphic(stopImageView);
         simulationMenu.getItems().addAll(play, pause, stop);
 
 
-        MenuBar menuBar = new MenuBar();
+        menuBar = new MenuBar();
         menuBar.getMenus().addAll(editorMenu, territoriumMenu, elefantMenu, simulationMenu);
 
         Image newImage = new Image("New24.gif");
@@ -190,99 +156,64 @@ public class MainStage extends Stage {
 
 
         //ToolBar
-        Button newT = new Button();
+        newT = new Button();
         newT.setGraphic(newImageView);
         newT.setTooltip(new Tooltip("Neu"));
-        newT.setOnAction(this::reset);
-        Button loadT = new Button();
+        loadT = new Button();
         loadT.setGraphic(loadImageView);
         loadT.setTooltip(new Tooltip("Laden"));
-        Button saveT = new Button();
+        saveT = new Button();
         saveT.setGraphic(saveImageView);
         saveT.setTooltip(new Tooltip("Speichern"));
-        Button compileT = new Button();
+        compileT = new Button();
         compileT.setGraphic(compileImageView);
         compileT.setTooltip(new Tooltip("Kompilieren"));
-        Button gridT = new Button();
+        gridT = new Button();
         gridT.setGraphic(gridImageView);
         gridT.setTooltip(new Tooltip("Größe ändern"));
-        gridT.setOnAction(e -> {
-            Dialog<Pair<Integer, Integer>> dialog = new Dialog<>();
-            dialog.setTitle("Change Size");
-            ButtonType applyButton = new ButtonType("Apply", ButtonBar.ButtonData.APPLY);
-            dialog.getDialogPane().getButtonTypes().addAll(applyButton, ButtonType.CANCEL);
-
-            Spinner<Integer> rowSpinner = new Spinner<>(4, 20, territorium.getRows());
-            Spinner<Integer> colSpinner = new Spinner<>(4, 20, territorium.getCols());
-
-            VBox vbox = new VBox();
-            vbox.getChildren().addAll(rowSpinner, colSpinner);
-            dialog.getDialogPane().setContent(vbox);
-
-            dialog.setResultConverter(dialogButton -> {
-                if(dialogButton == applyButton){
-                    return new Pair<>(rowSpinner.getValue(), colSpinner.getValue());
-                }
-                return null;
-            });
-
-            Optional<Pair<Integer, Integer>> result = dialog.showAndWait();
-
-            result.ifPresent(pair -> {
-                territorium.setRows(pair.getKey());
-                territorium.setCols(pair.getValue());
-                territorium.setGrid(pair.getKey(), pair.getValue());
-                territoriumPane.eraseGrid();
-                territoriumPane.printCanvas();
-            });
-        });
         ToggleGroup toolToggle = new ToggleGroup();
-        ToggleButton eleT = new ToggleButton();
+        eleT = new ToggleButton();
         eleT.setGraphic(elefantImageView);
         eleT.setTooltip(new Tooltip("Elefant"));
-        eleT.setOnAction(e -> territoriumPane.placeMode(1));
         eleT.setToggleGroup(toolToggle);
         eleT.selectedProperty().bindBidirectional(placeElephant.selectedProperty());
-        ToggleButton peanutT = new ToggleButton();
+        peanutT = new ToggleButton();
         peanutT.setGraphic(peanutImageView);
         peanutT.setTooltip(new Tooltip("Erdnuss"));
-        peanutT.setOnAction(e -> territoriumPane.placeMode(2));
         peanutT.setToggleGroup(toolToggle);
         peanutT.selectedProperty().bindBidirectional(placePeanut.selectedProperty());
-        ToggleButton mouseT = new ToggleButton();
+        mouseT = new ToggleButton();
         mouseT.setGraphic(mouseImageView);
         mouseT.setTooltip(new Tooltip("Maus"));
-        mouseT.setOnAction(e -> territoriumPane.placeMode(3));
         mouseT.setToggleGroup(toolToggle);
         mouseT.selectedProperty().bindBidirectional(placeMouse.selectedProperty());
-        ToggleButton deleteT = new ToggleButton();
+        deleteT = new ToggleButton();
         deleteT.setGraphic(deleteImageView);
         deleteT.setTooltip(new Tooltip("Löschen"));
-        deleteT.setOnAction(e -> territoriumPane.placeMode(4));
         deleteT.setToggleGroup(toolToggle);
         deleteT.selectedProperty().bindBidirectional(deleteCell.selectedProperty());
-        Button eMitET = new Button();
+        eMitET = new Button();
         eMitET.setGraphic(eMitEImageView);
         eMitET.setTooltip(new Tooltip("???"));
-        Button turnT = new Button();
+        turnT = new Button();
         turnT.setGraphic(turnImageView);
         turnT.setTooltip(new Tooltip("Drehung Links"));
-        Button stepT = new Button();
+        stepT = new Button();
         stepT.setGraphic(stepImageView);
         stepT.setTooltip(new Tooltip("Vor"));
-        Button takeT = new Button();
+        takeT = new Button();
         takeT.setGraphic(takeImageView);
         takeT.setTooltip(new Tooltip("Nimm"));
-        Button dropT = new Button();
+        dropT = new Button();
         dropT.setGraphic(dropImageView);
         dropT.setTooltip(new Tooltip("Fallen lassen"));
-        Button playT = new Button();
+        playT = new Button();
         playT.setGraphic(playImageView24);
         playT.setTooltip(new Tooltip("Play"));
-        Button pauseT = new Button();
+        pauseT = new Button();
         pauseT.setGraphic(pauseImageView24);
         pauseT.setTooltip(new Tooltip("Pause"));
-        Button stopT = new Button();
+        stopT = new Button();
         stopT.setGraphic(stopImageView24);
         stopT.setTooltip(new Tooltip("Stop"));
 
@@ -291,12 +222,13 @@ public class MainStage extends Stage {
         );
 
 
-        territoriumPane = new TerritoriumPane(ter, this);
-        ScrollPane scPane = new ScrollPane(territoriumPane);
+
+        scPane = new ScrollPane(territoriumPane);
         scPane.setFitToHeight(true);
         scPane.setFitToWidth(true);
 
         SplitPane pane = new SplitPane();
+        //pane.setDividerPositions(0.35);
         messageLabel = new Label("Welcome");
         pane.getItems().addAll(new TextArea("Code here"), scPane);
         VBox vbox = new VBox();
@@ -312,5 +244,215 @@ public class MainStage extends Stage {
         territorium.reset();
         territoriumPane.printCanvas();
         messageLabel.setText("game has reset");
+    }
+
+    public Territorium getTerritorium() {
+        return territorium;
+    }
+
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
+
+    public MenuItem getNeu() {
+        return neu;
+    }
+
+    public MenuItem getOpen() {
+        return open;
+    }
+
+    public MenuItem getCompile() {
+        return compile;
+    }
+
+    public MenuItem getPrint1() {
+        return print1;
+    }
+
+    public MenuItem getQuit() {
+        return quit;
+    }
+
+    public MenuItem getXml() {
+        return xml;
+    }
+
+    public MenuItem getJaxb() {
+        return jaxb;
+    }
+
+    public MenuItem getSerial() {
+        return serial;
+    }
+
+    public MenuItem getPrint2() {
+        return print2;
+    }
+
+    public MenuItem getSaveAP() {
+        return saveAP;
+    }
+
+    public MenuItem getLoad() {
+        return load;
+    }
+
+    public MenuItem getChangeSize() {
+        return changeSize;
+    }
+
+    public MenuItem getAmountP() {
+        return amountP;
+    }
+
+    public MenuItem getLeftTurn() {
+        return leftTurn;
+    }
+
+    public MenuItem getStep() {
+        return step;
+    }
+
+    public MenuItem getTake() {
+        return take;
+    }
+
+    public MenuItem getGive() {
+        return give;
+    }
+
+    public MenuItem getPlay() {
+        return play;
+    }
+
+    public MenuItem getPause() {
+        return pause;
+    }
+
+    public MenuItem getStop() {
+        return stop;
+    }
+
+    public RadioMenuItem getPlaceElephant() {
+        return placeElephant;
+    }
+
+    public RadioMenuItem getPlacePeanut() {
+        return placePeanut;
+    }
+
+    public RadioMenuItem getPlaceMouse() {
+        return placeMouse;
+    }
+
+    public RadioMenuItem getDeleteCell() {
+        return deleteCell;
+    }
+
+    public Button getNewT() {
+        return newT;
+    }
+
+    public Button getLoadT() {
+        return loadT;
+    }
+
+    public Button getSaveT() {
+        return saveT;
+    }
+
+    public Button getCompileT() {
+        return compileT;
+    }
+
+    public Button getGridT() {
+        return gridT;
+    }
+
+    public Button geteMitET() {
+        return eMitET;
+    }
+
+    public Button getTurnT() {
+        return turnT;
+    }
+
+    public Button getStepT() {
+        return stepT;
+    }
+
+    public Button getTakeT() {
+        return takeT;
+    }
+
+    public Button getDropT() {
+        return dropT;
+    }
+
+    public Button getPlayT() {
+        return playT;
+    }
+
+    public Button getPauseT() {
+        return pauseT;
+    }
+
+    public Button getStopT() {
+        return stopT;
+    }
+
+    public ToggleButton getEleT() {
+        return eleT;
+    }
+
+    public ToggleButton getPeanutT() {
+        return peanutT;
+    }
+
+    public ToggleButton getMouseT() {
+        return mouseT;
+    }
+
+    public ToggleButton getDeleteT() {
+        return deleteT;
+    }
+
+    public TerritoriumPane getTerritoriumPane() {
+        return territoriumPane;
+    }
+
+    public void startSizeDialog(){
+        Dialog<Pair<Integer, Integer>> dialog = new Dialog<>();
+        dialog.setTitle("Change Size");
+        ButtonType applyButton = new ButtonType("Apply", ButtonBar.ButtonData.APPLY);
+        dialog.getDialogPane().getButtonTypes().addAll(applyButton, ButtonType.CANCEL);
+
+        Spinner<Integer> rowSpinner = new Spinner<>(4, 20, territorium.getRows());
+        Spinner<Integer> colSpinner = new Spinner<>(4, 20, territorium.getCols());
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(rowSpinner, colSpinner);
+        dialog.getDialogPane().setContent(vbox);
+
+        dialog.setResultConverter(dialogButton -> {
+            if(dialogButton == applyButton){
+                return new Pair<>(rowSpinner.getValue(), colSpinner.getValue());
+            }
+            return null;
+        });
+
+        Optional<Pair<Integer, Integer>> result = dialog.showAndWait();
+
+        result.ifPresent(pair -> {
+            territorium.setRows(pair.getKey());
+            territorium.setCols(pair.getValue());
+            territorium.setGrid(pair.getKey(), pair.getValue());
+            territoriumPane.eraseGrid();
+            territoriumPane.printCanvas();
+
+        });
+
+
     }
 }

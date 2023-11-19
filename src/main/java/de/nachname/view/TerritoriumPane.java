@@ -1,5 +1,7 @@
-package de.nachname;
+package de.nachname.view;
 
+import de.nachname.model.Territorium;
+import de.nachname.util.Observer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -10,7 +12,7 @@ import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Transform;
 
 
-public class TerritoriumPane extends StackPane {
+public class TerritoriumPane extends StackPane implements Observer {
 
     private static final int BORDER_SIZE = 20;
     private static final int TILE_SIZE = 35;
@@ -36,28 +38,13 @@ public class TerritoriumPane extends StackPane {
 
     }
 
-    public void placeMode(int i){
-        canvas.setOnMouseClicked(null);
-
-        switch(i){
-            case 1:
-                this.setOnMouseClicked(this::placeElephant);
-                break;
-            case 2:
-                this.setOnMouseClicked(this::placePeanut);
-                break;
-            case 3:
-                this.setOnMouseClicked(this::placeMouse);
-                break;
-            case 4:
-                this.setOnMouseClicked(this::clear);
-                break;
+    public Canvas getCanvas() {
+        return canvas;
     }
 
 
-    }
 
-    private void placeElephant(MouseEvent ev){
+    public void placeElephant(MouseEvent ev){
 
         System.out.println("in elephant placing mode");
         double x = ev.getX();
@@ -80,7 +67,7 @@ public class TerritoriumPane extends StackPane {
         printCanvas();
     }
 
-    private void placePeanut(MouseEvent ev){
+    public void placePeanut(MouseEvent ev){
 
         System.out.println("in peanut placing mode");
 
@@ -100,7 +87,7 @@ public class TerritoriumPane extends StackPane {
         printCanvas();
     }
 
-    private void placeMouse(MouseEvent ev){
+    public void placeMouse(MouseEvent ev){
 
         System.out.println("in Mouse placing mode");
         double x = ev.getX();
@@ -117,11 +104,8 @@ public class TerritoriumPane extends StackPane {
         printCanvas();
     }
 
-    public void eraseGrid(){
-        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-    }
 
-    private void clear(MouseEvent ev){
+    public void clear(MouseEvent ev){
         System.out.println("clearmode");
         double x = ev.getX();
         double y = ev.getY();
@@ -136,6 +120,12 @@ public class TerritoriumPane extends StackPane {
 
         printCanvas();
     }
+
+    public void eraseGrid(){
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+
     public void printCanvas(){
         canvas = new Canvas(calcWidth(), calcHeight());
         gc = canvas.getGraphicsContext2D();
@@ -196,5 +186,10 @@ public class TerritoriumPane extends StackPane {
 
     private int calcHeight(){
         return 2 * BORDER_SIZE + territorium.getRows() * TILE_SIZE;
+    }
+
+    @Override
+    public void update() {
+        printCanvas();
     }
 }

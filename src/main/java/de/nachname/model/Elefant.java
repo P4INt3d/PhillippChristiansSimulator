@@ -1,9 +1,9 @@
-package de.nachname;
+package de.nachname.model;
 
-import de.nachname.exceptions.MouseException;
-import de.nachname.exceptions.NoPeanutException;
-import de.nachname.exceptions.RandException;
-import de.nachname.exceptions.TileException;
+import de.nachname.util.exceptions.MouseException;
+import de.nachname.util.exceptions.NoPeanutException;
+import de.nachname.util.exceptions.RandException;
+import de.nachname.util.exceptions.TileException;
 
 public class Elefant {
     

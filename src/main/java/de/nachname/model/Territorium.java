@@ -1,6 +1,8 @@
-package de.nachname;
+package de.nachname.model;
 
-public class Territorium {
+import de.nachname.util.Observable;
+
+public class Territorium extends Observable {
 
     private int rows;
     private int cols;

@@ -1,4 +1,4 @@
-package de.nachname.exceptions;
+package de.nachname.util.exceptions;
 
 public class MouseException extends RuntimeException{
 
