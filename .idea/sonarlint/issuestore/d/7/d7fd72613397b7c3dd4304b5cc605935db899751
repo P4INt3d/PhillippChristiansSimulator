@@ -1,0 +1,6 @@
+
+n
+java:S3655£"PCall "saveFile.isPresent()" or "!saveFile.isEmpty()" before accessing the value.(³Ô‘8ŠËìÀ1
+X	java:S899";Do something with the "boolean" value returned by "delete".(Â¥éì8ËìÀ1
+l
+java:S4042"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(Â¥éì8ËìÀ1
